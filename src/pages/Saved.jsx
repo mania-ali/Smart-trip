@@ -2,7 +2,7 @@ import useSaved from "../hooks/useSaved";
 import SavedList from "../components/saved/SavedList";
 
 function Saved() {
-  const { savedItems } = useSaved();
+  const { savedItems, removeFromSaved } = useSaved();
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
@@ -11,7 +11,7 @@ function Saved() {
         Your saved places will show up here.
       </p>
 
-      <SavedList items={savedItems} />
+      <SavedList items={savedItems} onRemove={removeFromSaved} />
     </div>
   );
 }

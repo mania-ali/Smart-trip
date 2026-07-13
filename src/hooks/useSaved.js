@@ -9,10 +9,11 @@ import {
 function useSaved() {
   const [savedItems, setSavedItems] = useState(getSavedDestinations());
 
-  function addToSaved(item) {
-    saveDestination(item);
-    setSavedItems(getSavedDestinations());
-  }
+function addToSaved(item) {
+  const wasDuplicate = saveDestination(item);
+  setSavedItems(getSavedDestinations());
+  return !wasDuplicate; // true if successfully saved, false if duplicate
+}
 
   function removeFromSaved(id) {
     removeSavedDestination(id);
@@ -23,13 +24,13 @@ function useSaved() {
     return isDestinationSaved(id);
   }
 
-  function toggleSaved(item) {
-    if (isSaved(item.id)) {
-      removeFromSaved(item.id);
-    } else {
-      addToSaved(item);
-    }
+function toggleSaved(item) {
+  if (isSaved(item.id)) {
+    removeFromSaved(item.id);
+  } else {
+    addToSaved(item);
   }
+}
 
   return {
     savedItems,

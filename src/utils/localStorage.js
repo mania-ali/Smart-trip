@@ -1,12 +1,16 @@
 export function saveDestination(item) {
   const savedItems = JSON.parse(localStorage.getItem("saved")) || [];
 
-  const alreadyExists = savedItems.some((saved) => saved.id === item.id);
+  const alreadyExists = savedItems.some(
+    (saved) => saved.name.toLowerCase() === item.name.toLowerCase()
+  );
 
   if (!alreadyExists) {
     savedItems.push(item);
     localStorage.setItem("saved", JSON.stringify(savedItems));
   }
+
+  return alreadyExists; // let the caller know if it was blocked
 }
 
 export function getSavedDestinations() {

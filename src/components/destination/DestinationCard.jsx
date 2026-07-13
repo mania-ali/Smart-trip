@@ -10,6 +10,8 @@ const buildSavedItem = () => {
       region: destination.region,
       borders: destination.borders,
       languages: destination.languages,
+      latitude: destination.latlng?.[0],
+      longitude: destination.latlng?.[1],
     };
   }
 
@@ -24,7 +26,6 @@ const buildSavedItem = () => {
     longitude: destination.longitude,
   };
 };
-
   return (
     <div className="bg-white rounded-xl shadow p-6 max-w-md mx-auto">
       <h2 className="text-2xl font-bold mb-4">{destination.name}</h2>

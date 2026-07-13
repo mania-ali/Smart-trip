@@ -2,6 +2,8 @@ import { useState } from "react";
 import SearchType from "../components/search/SearchType";
 import SearchBar from "../components/search/SearchBar";
 import DestinationCard from "../components/destination/DestinationCard";
+import Loader from "../components/common/Loader";
+import Error from "../components/common/Error";
 import useDestination from "../hooks/useDestination";
 import useWeather from "../hooks/useWeather";
 
@@ -37,11 +39,15 @@ function Home() {
       <SearchBar searchType={searchType} onSearch={handleSearch} />
 
       {(loading || weatherLoading) && (
-        <p className="text-center text-gray-500 mt-8">Loading...</p>
+        <div className="mt-8">
+          <Loader message="Searching..." />
+        </div>
       )}
 
       {(error || weatherError) && (
-        <p className="text-center text-red-600 mt-8">{error || weatherError}</p>
+        <div className="mt-8 max-w-md mx-auto">
+          <Error message={error || weatherError} />
+        </div>
       )}
 
       {results && weather && !loading && !error && !weatherLoading && !weatherError && (
