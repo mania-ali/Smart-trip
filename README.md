@@ -1,16 +1,104 @@
-# React + Vite
+# Smart Trip Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based web application that helps users plan trips by searching for countries or cities and viewing useful travel information in one place.
 
-Currently, two official plugins are available:
+##  Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+-  Search by country or city
+-  View country information
+-  View city details using geocoding
+-  Weather information
+-  Save favorite destinations
+-  Responsive user interface
+-  Fast performance using React + Vite
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+##  Tech Stack
 
-## Expanding the ESLint configuration
+### Frontend
+- React
+- Vite
+- React Router
+- CSS / Tailwind CSS (whichever you're using)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### APIs
+- Country API
+- Geocoding API
+- Weather API
+
+---
+
+##  Project Structure
+
+```
+src/
+│
+├── assets/
+├── components/
+│   ├── common/
+│   ├── destination/
+│   ├── landing/
+│   ├── saved/
+│   └── search/
+│
+├── hooks/
+├── pages/
+├── services/
+├── utils/
+│
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+##  Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/mania-ali/Smart-trip.git
+```
+
+Go into the project
+
+```bash
+cd Smart-trip
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+##  Screenshots
+
+(Add screenshots here later)
+
+---
+
+##  Future Improvements
+
+- AI itinerary generation
+- Interactive maps
+- Hotel recommendations
+- Flight information
+- Budget planner
+- Authentication
+- Trip sharing
+
+---
+
+## Author
+
+Mania Ali
