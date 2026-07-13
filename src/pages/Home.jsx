@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SearchType from "../components/search/SearchType";
 import SearchBar from "../components/search/SearchBar";
+import DestinationCard from "../components/destination/DestinationCard";
 import useDestination from "../hooks/useDestination";
 import useWeather from "../hooks/useWeather";
 
@@ -11,8 +12,7 @@ function Home() {
 
   const handleSearch = async (query) => {
     const data = await searchDestination(searchType, query);
-    console.log("returned data:", data);
-    if (!data) return; // destination search failed, don't fetch weather
+    if (!data) return;
 
     let latitude, longitude;
 
@@ -24,7 +24,6 @@ function Home() {
     }
 
     getWeather(latitude, longitude);
-    
   };
 
   return (
@@ -45,16 +44,14 @@ function Home() {
         <p className="text-center text-red-600 mt-8">{error || weatherError}</p>
       )}
 
-      {results && !loading && !error && (
-        <pre className="mt-8 bg-gray-50 p-4 rounded-lg overflow-x-auto text-sm">
-          {JSON.stringify(results, null, 2)}
-        </pre>
-      )}
-
-      {weather && !weatherLoading && !weatherError && (
-        <pre className="mt-4 bg-blue-50 p-4 rounded-lg overflow-x-auto text-sm">
-          {JSON.stringify(weather, null, 2)}
-        </pre>
+      {results && weather && !loading && !error && !weatherLoading && !weatherError && (
+        <div className="mt-10">
+          <DestinationCard
+            searchType={searchType}
+            destination={results[0]}
+            weather={weather}
+          />
+        </div>
       )}
     </div>
   );
