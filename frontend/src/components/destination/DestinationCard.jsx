@@ -2,6 +2,7 @@ import SaveButton from "./SaveButton";
 import { useMemo } from "react";
 
 function DestinationCard({ searchType, destination, weather, showSaveButton = true }) {
+  //usememo lets it get called only on change
 const savedItem = useMemo(() => {
   if (searchType === "country") {
     return {
