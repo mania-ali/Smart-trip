@@ -12,7 +12,7 @@ function useSaved() {
 function addToSaved(item) {
   const wasDuplicate = saveDestination(item);
   setSavedItems(getSavedDestinations());
-  return !wasDuplicate; // true if successfully saved, false if duplicate
+  return !wasDuplicate; // duplicate->return false->not saved, notduplicate->return true-> saved
 }
 
   function removeFromSaved(id) {
@@ -24,20 +24,14 @@ function addToSaved(item) {
     return isDestinationSaved(id);
   }
 
-function toggleSaved(item) {
-  if (isSaved(item.id)) {
-    removeFromSaved(item.id);
-  } else {
-    addToSaved(item);
-  }
-}
+
 
   return {
     savedItems,
     addToSaved,
     removeFromSaved,
     isSaved,
-    toggleSaved,
+  
   };
 }
 

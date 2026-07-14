@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { fetchAttractions } from "../services/geminiApi";
+import { fetchAttractions } from "../services/AttractionsApi";
+import { useRef, useState } from "react";
 
-const attractionsCache = {}; // persists across calls, keyed by coordinates
-
-function useGemini() {
+//with useref, when user switches between pages, cache clears 
+function useAttractions() {
+  const cacheRef = useRef({});
   const [attractions, setAttractions] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -11,8 +11,8 @@ function useGemini() {
   const getAttractions = async (latitude, longitude) => {
     const cacheKey = `${latitude},${longitude}`;
 
-    if (attractionsCache[cacheKey]) {
-      setAttractions(attractionsCache[cacheKey]);
+   if (cacheRef.current[cacheKey]) {
+      setAttractions(cacheRef.current[cacheKey]);
       return;
     }
 
@@ -22,7 +22,7 @@ function useGemini() {
 
     try {
       const data = await fetchAttractions(latitude, longitude);
-      attractionsCache[cacheKey] = data;
+         cacheRef.current[cacheKey] = data;
       setAttractions(data);
     } catch (err) {
       setError(err.message || "Something went wrong getting attractions.");
@@ -35,4 +35,4 @@ function useGemini() {
   return { attractions, loading, error, getAttractions };
 }
 
-export default useGemini;
+export default useAttractions;

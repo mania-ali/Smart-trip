@@ -1,9 +1,13 @@
 function DestinationOptionsList({ searchType, options, onSelect }) {
   return (
     <div className="max-w-md mx-auto mt-8 bg-white rounded-xl shadow divide-y divide-gray-100">
-      {options.map((option, index) => (
+      {options.map((option) => (
         <button
-          key={index}
+          key={
+       searchType === "country"
+       ? option.name
+       : `${option.latitude}-${option.longitude}`
+       }
           onClick={() => onSelect(option)}
           className="w-full text-left px-4 py-3 hover:bg-gray-50 transition"
         >

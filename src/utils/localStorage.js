@@ -1,9 +1,17 @@
-export function saveDestination(item) {
-  const savedItems = JSON.parse(localStorage.getItem("saved")) || [];
+function getSavedItems() {
+  try {
+    return JSON.parse(localStorage.getItem("saved")) || [];
+  } catch {
+    return [];
+  }
+}
 
-  const alreadyExists = savedItems.some(
-    (saved) => saved.name.toLowerCase() === item.name.toLowerCase()
-  );
+export function saveDestination(item) {
+  const savedItems = getSavedItems();
+
+ const alreadyExists = savedItems.some(
+  (saved) => saved.id === item.id
+);
 
   if (!alreadyExists) {
     savedItems.push(item);
@@ -14,16 +22,16 @@ export function saveDestination(item) {
 }
 
 export function getSavedDestinations() {
-  return JSON.parse(localStorage.getItem("saved")) || [];
+  return getSavedItems();
 }
 
 export function removeSavedDestination(id) {
-  const savedItems = JSON.parse(localStorage.getItem("saved")) || [];
+  const savedItems = getSavedItems();
   const updatedItems = savedItems.filter((item) => item.id !== id);
   localStorage.setItem("saved", JSON.stringify(updatedItems));
 }
 
 export function isDestinationSaved(id) {
-  const savedItems = JSON.parse(localStorage.getItem("saved")) || [];
+  const savedItems = getSavedItems();
   return savedItems.some((item) => item.id === id);
 }

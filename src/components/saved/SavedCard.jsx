@@ -22,14 +22,7 @@ function SavedCard({ item, onRemove }) {
         ✕
       </button>
 
-      {loading && (
-        <p className="text-center text-sm text-gray-400 mt-2">Loading weather...</p>
-      )}
-
-      {error && (
-        <p className="text-center text-sm text-red-500 mt-2">{error}</p>
-      )}
-
+     
      {loading && <Loader message="Fetching weather..." />}
       {error && <Error message={error} />}
 

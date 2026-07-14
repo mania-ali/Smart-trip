@@ -1,7 +1,8 @@
 import SaveButton from "./SaveButton";
+import { useMemo } from "react";
 
 function DestinationCard({ searchType, destination, weather, showSaveButton = true }) {
-const buildSavedItem = () => {
+const savedItem = useMemo(() => {
   if (searchType === "country") {
     return {
       id: `country-${destination.name}`,
@@ -25,7 +26,8 @@ const buildSavedItem = () => {
     latitude: destination.latitude,
     longitude: destination.longitude,
   };
-};
+}, [searchType, destination]);
+
   return (
     <div className="bg-white rounded-xl shadow p-6 max-w-md mx-auto">
       <h2 className="text-2xl font-bold mb-4">{destination.name}</h2>
@@ -65,30 +67,30 @@ const buildSavedItem = () => {
       </div>
 
       {weather && (() => {
-        const { temperature_2m, apparent_temperature, relative_humidity_2m, wind_speed_10m } = weather;
+       
         return (
           <>
             <hr className="my-4" />
             <h3 className="text-lg font-semibold mb-2">Current Weather</h3>
             <div className="space-y-2 text-gray-700 mb-4">
               <p>
-                <span className="font-semibold">Temperature:</span> {temperature_2m}°C
+                <span className="font-semibold">Temperature:</span> {weather.temperature_2m}°C
               </p>
               <p>
-                <span className="font-semibold">Feels Like:</span> {apparent_temperature}°C
+                <span className="font-semibold">Feels Like:</span> {weather.apparent_temperature}°C
               </p>
               <p>
-                <span className="font-semibold">Humidity:</span> {relative_humidity_2m}%
+                <span className="font-semibold">Humidity:</span> {weather.relative_humidity_2m}%
               </p>
               <p>
-                <span className="font-semibold">Wind Speed:</span> {wind_speed_10m} km/h
+                <span className="font-semibold">Wind Speed:</span> {weather.wind_speed_10m} km/h
               </p>
             </div>
           </>
         );
       })()}
 
-      {showSaveButton && <SaveButton item={buildSavedItem()} />}
+      {showSaveButton && <SaveButton item={savedItem} />}
     </div>
   );
 }
