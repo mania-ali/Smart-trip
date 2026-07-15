@@ -105,20 +105,20 @@ function Home() {
       )}
 
       {selectedDestination && weather && !weatherLoading && !weatherError && (
-        <div className="mt-10">
-          <DestinationCard
-            searchType={searchType}
-            destination={selectedDestination}
-            weather={weather}
-          />
+  <div className="mt-10 grid md:grid-cols-2 gap-6 max-w-3xl mx-auto items-start">
+    <DestinationCard
+      searchType={searchType}
+      destination={selectedDestination}
+      weather={weather}
+    />
 
-          <AttractionsList
-            attractions={attractions}
-            loading={aiLoading}
-            error={aiError}
-          />
-        </div>
-      )}
+    <AttractionsList
+      attractions={attractions}
+      loading={aiLoading}
+      error={aiError}
+    />
+  </div>
+)}
     </div>
   );
 }

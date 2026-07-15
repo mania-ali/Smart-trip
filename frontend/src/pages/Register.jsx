@@ -22,61 +22,48 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-6">
-      <div className="max-w-md w-full">
-        <div className="text-center mb-8">
-          <div className="text-5xl mb-2">🌍</div>
-          <h1 className="text-3xl font-bold text-gray-900">Smart Trip Planner</h1>
-          <p className="text-gray-500 mt-1">Create an account to start planning</p>
+    <div className="min-h-screen flex items-center justify-center bg-stone-50 px-6">
+      <div className="max-w-sm w-full">
+        <div className="text-center mb-10">
+          <div className="text-4xl mb-3">🌍</div>
+          <h1 className="text-2xl font-black text-stone-900">Create your account</h1>
+          <p className="text-stone-500 mt-1 text-sm">Start planning smarter trips</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                required
-              />
-            </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border border-stone-300 rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-900 focus:border-transparent transition"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-stone-300 rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-900 focus:border-transparent transition"
+            required
+          />
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                required
-              />
-            </div>
+          {error && <Error message={error} />}
 
-            {error && <Error message={error} />}
+          <button
+            type="submit"
+            className="w-full bg-emerald-900 text-white py-3 rounded-full font-semibold hover:bg-emerald-800 transition"
+          >
+            Register
+          </button>
+        </form>
 
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-            >
-              Register
-            </button>
-          </form>
-
-          <p className="text-center text-gray-500 mt-6 text-sm">
-            Already have an account?{" "}
-            <Link to="/login" className="text-blue-600 font-semibold hover:underline">
-              Login
-            </Link>
-          </p>
-        </div>
+        <p className="text-center text-stone-500 mt-6 text-sm">
+          Already have an account?{" "}
+          <Link to="/login" className="text-emerald-900 font-semibold hover:underline">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

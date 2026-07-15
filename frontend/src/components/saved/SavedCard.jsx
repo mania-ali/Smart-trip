@@ -15,12 +15,12 @@ function SavedCard({ item, onRemove }) {
   return (
     <div className="relative">
       <button
-        onClick={() => onRemove(item.id)}
-        className="absolute top-4 right-4 z-10 text-gray-400 hover:text-red-500 transition"
-        aria-label="Remove"
-      >
-        ✕
-      </button>
+  onClick={() => onRemove(item.id)}
+  className="absolute top-5 right-5 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-stone-100 text-stone-400 hover:bg-red-50 hover:text-red-500 transition"
+  aria-label="Remove"
+>
+  ✕
+</button>
 
      
      {loading && <Loader message="Fetching weather..." />}

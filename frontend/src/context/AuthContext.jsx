@@ -30,6 +30,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
+    //react stores token globally
     <AuthContext.Provider value={{ token, email, login, register, logout }}>
       {children}
     </AuthContext.Provider>

@@ -4,7 +4,6 @@ function FeaturesSection() {
     "Search any city",
     "Live weather",
     "Tourist attractions",
-    "AI travel suggestions",
     "Save favourite destinations",
   ];
 

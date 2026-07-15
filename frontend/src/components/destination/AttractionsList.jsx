@@ -5,7 +5,7 @@ import Error from "../common/Error";
 function AttractionsList({ attractions, loading, error }) {
   if (loading) {
     return (
-      <div className="max-w-md mx-auto mt-6">
+      <div className="w-full">
         <Loader message="Finding top attractions..." />
       </div>
     );
@@ -13,7 +13,7 @@ function AttractionsList({ attractions, loading, error }) {
 
   if (error) {
     return (
-      <div className="max-w-md mx-auto mt-6">
+      <div className="w-full">
         <Error message={error} />
       </div>
     );
@@ -22,8 +22,8 @@ function AttractionsList({ attractions, loading, error }) {
   if (!attractions || attractions.length === 0) return null;
 
   return (
-    <div className="bg-white rounded-xl shadow p-6 max-w-md mx-auto mt-6">
-      <h3 className="text-lg font-semibold mb-3">🏛️ Top Attractions</h3>
+    <div className="bg-white rounded-2xl border border-stone-200 p-7 w-full">
+      <h3 className="text-lg font-black text-stone-900 mb-4">🏛️ Top Attractions</h3>
       <div className="space-y-3">
         {attractions.map((attraction, i) => (
           <AttractionCard key={i} attraction={attraction} />
